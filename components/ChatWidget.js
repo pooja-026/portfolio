@@ -3,7 +3,7 @@
 import { useState, useRef, useEffect } from "react";
 import { MessageCircle, Send, Sparkles, X } from "lucide-react";
 
-const STARTERS = ["What does Pooja build?", "Tell me about Mockmate", "What are her strengths?"];
+const STARTERS = ["Give me the recruiter view", "Show her ML depth", "Show data engineering work", "Tell me about Victor AI"];
 
 export default function ChatWidget() {
   const [open, setOpen] = useState(false);
