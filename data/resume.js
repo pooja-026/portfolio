@@ -1,9 +1,9 @@
 export const profile = {
   name: "Pooja Nemade",
   tagline:
-    "Data Engineer & ML Engineer turning messy pipelines into decisions that hold up under pressure.",
+    "Building thoughtful AI and data systems that turn complexity into clear, human-centered action.",
   about:
-    "I build systems that work quietly and well. On the data engineering side, that's meant pipelines on Azure Databricks and Delta Lake that don't wake anyone up at 3am. On the ML side, it's meant everything from BERT to LSTMs, applied to problems where a wrong answer actually costs someone something - like Mockmate, my AI interview coach, which turned into a published research paper. I led a 7-person team to ship Victor AI, a multi-agent university assistant, in a single hackathon weekend. Currently finishing my MS in Computer and Information Science at the University at Buffalo - looking for where to point all of this next.",
+    "I like turning complicated systems into experiences people can actually trust. Sometimes that means building data pipelines with Azure Databricks and Delta Lake; sometimes it means teaching a graph neural network to spot fraud patterns that a spreadsheet would miss. I build at the intersection of data, AI, and human behavior - from MockMate, an AI interview evaluator that became published research, to Victor AI, a multi-agent campus assistant I led a seven-person team to create. Now, while finishing my MS at the University at Buffalo, I am looking for the next difficult, meaningful problem to explore.",
   education:
     "MS in Computer and Information Science, University at Buffalo (SUNY), expected Dec 2026, GPA 3.85.",
   experience:
