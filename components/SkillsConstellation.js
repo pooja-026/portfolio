@@ -11,6 +11,10 @@ const initialNodes = [
   { id: "React", x: 49, y: 82, projects: "Portfolio and full-stack interfaces built to make complex systems understandable." },
   { id: "Docker", x: 9, y: 48, projects: "Pintos systems work: a Docker and VS Code workflow for kernel-level debugging." },
   { id: "MCP", x: 90, y: 48, projects: "AI Avatar Laptop Assistant: local tools and safe computer actions via an MCP layer." },
+  { id: "PySpark", x: 36, y: 18, projects: "Data-intensive computing and scalable transformation work alongside Azure Databricks and Delta Lake." },
+  { id: "PostgreSQL", x: 65, y: 42, projects: "LookThePart analytics and IMDb database work: turning structured data into useful, queryable insight." },
+  { id: "OpenCV", x: 31, y: 63, projects: "MockMate: real-time video assessment paired with NLP-based sentiment analysis." },
+  { id: "C + Systems", x: 66, y: 88, projects: "Pintos work in scheduling, synchronization, system calls, and defensive kernel-interface design." },
 ];
 
 export default function SkillsConstellation() {
