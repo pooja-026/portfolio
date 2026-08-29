@@ -1,31 +1,92 @@
-# Pooja Nemade - Portfolio
+# Pooja Nemade — Portfolio
 
-An editorial, interactive portfolio for a data and ML engineer. It includes selected work, qualifications, a photo-gallery layout, and a portfolio chatbot grounded in the resume data in `data/resume.js`.
+An interactive portfolio for **Pooja Nemade**, a data and machine-learning engineer building thoughtful systems that make complex information useful and human-centered.
 
-## Local setup
+The site combines a polished, exploration-inspired interface with detailed project stories, research credentials, and an AI assistant grounded in Pooja's professional background.
+
+## Highlights
+
+- Immersive, cursor-responsive interface with animated typography and visual exploration cues
+- Project case studies for **LookThePart**, **MockMate**, **Victor AI**, and a **Fraud Detection GNN**
+- Project media, demos, journey maps, research papers, certificates, and technical artifacts
+- Research and publication showcase, including conference and journal credentials
+- Interactive skills constellation and terminal-style portfolio explorer
+- Portfolio chatbot that can answer questions about Pooja's projects, education, skills, and experience
+- Responsive layout for desktop and mobile
+
+## Tech stack
+
+- [Next.js](https://nextjs.org/) and React
+- Tailwind CSS and custom CSS animations
+- [Lucide](https://lucide.dev/) icons
+- Anthropic Claude API, accessed through a server-side Next.js route
+- Vercel for deployment
+
+## Run locally
+
+1. Install dependencies:
+
+   ```bash
+   npm install
+   ```
+
+2. Create a local environment file from the example:
+
+   ```powershell
+   Copy-Item .env.example .env.local
+   ```
+
+3. Add your Anthropic API key to `.env.local`:
+
+   ```env
+   ANTHROPIC_API_KEY=your_key_here
+   ```
+
+4. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+Open [http://localhost:3000](http://localhost:3000) in your browser.
+
+## Content and media
+
+Most portfolio copy and chatbot context is maintained in [`data/resume.js`](./data/resume.js). Update this file when changing project descriptions, experience, education, contact links, or chatbot knowledge.
+
+Project-specific interactive experiences are in `components/`, including:
+
+- `LookThePartExplorer.js`
+- `MockMateExplorer.js`
+- `VictorAIExplorer.js`
+- `FraudGNNExplorer.js`
+
+Images, videos, research papers, and certificates are stored in `public/`. Keep public-facing assets organized in their corresponding project folders.
+
+## Deploy to Vercel
+
+1. Push this repository to GitHub.
+2. Import the repository in [Vercel](https://vercel.com/new). Vercel detects Next.js automatically.
+3. In **Project Settings → Environment Variables**, add `ANTHROPIC_API_KEY` for Production, Preview, and Development.
+4. Deploy.
+5. To connect a personal domain, open **Project Settings → Domains** and follow Vercel's DNS instructions.
+
+Every push to the production branch can trigger a new Vercel deployment. Preview deployments are also created for pull requests when connected through GitHub.
+
+## Security notes
+
+- Never commit `.env.local` or an API key. The repository's `.gitignore` excludes local environment files.
+- The Anthropic key is used only by `app/api/chat/route.js`, so it remains on the server and is not exposed to site visitors.
+
+## Available scripts
 
 ```bash
-npm install
-cp .env.example .env.local
-npm run dev
+npm run dev     # Start local development
+npm run build   # Create a production build
+npm run start   # Run the production build locally
+npm run lint    # Run linting
 ```
 
-Visit http://localhost:3000. Put your Anthropic API key in `.env.local` as `ANTHROPIC_API_KEY=sk-ant-...`. Never commit that file.
+---
 
-## Deploying to Vercel
-
-1. Push this project to a GitHub repository.
-2. Import the repository at [Vercel](https://vercel.com/new); it detects Next.js automatically.
-3. In Project Settings -> Environment Variables, add `ANTHROPIC_API_KEY` for Production, Preview, and Development.
-4. Deploy. The chat calls the server-side `/api/chat` route, keeping the API key out of the browser.
-5. To use your name as the address, add a custom domain in Project Settings -> Domains and follow the DNS records Vercel supplies.
-
-## Editing your content
-
-All resume/project text lives in `data/resume.js`; updating it keeps the page and chatbot knowledge in sync.
-
-The visual gallery intentionally uses stylized placeholders instead of invented personal photos. Before publishing, replace the three `.photo-*` cards in `app/page.js` with your own images. Also update the example email address and the LinkedIn/GitHub links in that same file.
-
-## Before sharing widely
-
-The chat route has no rate limiting. To control API costs, consider adding an IP rate limit with Upstash Redis or Vercel, lowering `max_tokens`, and enabling Vercel's web application firewall.
+Built and designed as a living portfolio: a place to explore Pooja's work, not just read a résumé.
