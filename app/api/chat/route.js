@@ -3,9 +3,9 @@ import { RESUME_CONTEXT } from "../../../data/resume";
 export async function POST(req) {
   const { messages } = await req.json();
 
-  if (!process.env.ANTHROPIC_API_KEY) {
+  if (!process.env.OPENAI_API_KEY) {
     return Response.json(
-      { error: "Server is missing ANTHROPIC_API_KEY. Add it in Vercel project settings." },
+      { error: "Server is missing OPENAI_API_KEY. Add it in Vercel project settings." },
       { status: 500 }
     );
   }
@@ -17,29 +17,31 @@ export async function POST(req) {
   }));
 
   try {
-    const response = await fetch("https://api.anthropic.com/v1/messages", {
+    const response = await fetch("https://api.openai.com/v1/responses", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        "x-api-key": process.env.ANTHROPIC_API_KEY,
-        "anthropic-version": "2023-06-01",
+        Authorization: `Bearer ${process.env.OPENAI_API_KEY}`,
       },
       body: JSON.stringify({
-        model: "claude-sonnet-4-6",
-        max_tokens: 300,
-        system: RESUME_CONTEXT,
-        messages: trimmed,
+        model: "gpt-4.1-mini",
+        max_output_tokens: 300,
+        instructions: RESUME_CONTEXT,
+        input: trimmed,
       }),
     });
 
     if (!response.ok) {
-      const errText = await response.text();
-      return Response.json({ error: `Anthropic API error: ${errText}` }, { status: 502 });
+      const detail = await response.text();
+      console.error("OpenAI chat request failed", response.status, detail);
+      return Response.json({ error: "The AI service could not complete the request." }, { status: 502 });
     }
 
     const data = await response.json();
     const reply =
-      data?.content?.find((c) => c.type === "text")?.text ||
+      data?.output
+        ?.flatMap((item) => item.type === "message" ? item.content || [] : [])
+        .find((item) => item.type === "output_text")?.text ||
       "Sorry, I couldn't generate a response just now.";
 
     return Response.json({ reply });

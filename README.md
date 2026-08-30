@@ -19,7 +19,7 @@ The site combines a polished, exploration-inspired interface with detailed proje
 - [Next.js](https://nextjs.org/) and React
 - Tailwind CSS and custom CSS animations
 - [Lucide](https://lucide.dev/) icons
-- Anthropic Claude API, accessed through a server-side Next.js route
+- OpenAI Responses API, accessed through a server-side Next.js route
 - Vercel for deployment
 
 ## Run locally
@@ -36,10 +36,10 @@ The site combines a polished, exploration-inspired interface with detailed proje
    Copy-Item .env.example .env.local
    ```
 
-3. Add your Anthropic API key to `.env.local`:
+3. Add your OpenAI API key to `.env.local`:
 
    ```env
-   ANTHROPIC_API_KEY=your_key_here
+   OPENAI_API_KEY=your_key_here
    ```
 
 4. Start the development server:
@@ -67,7 +67,7 @@ Images, videos, research papers, and certificates are stored in `public/`. Keep 
 
 1. Push this repository to GitHub.
 2. Import the repository in [Vercel](https://vercel.com/new). Vercel detects Next.js automatically.
-3. In **Project Settings → Environment Variables**, add `ANTHROPIC_API_KEY` for Production, Preview, and Development.
+3. In **Project Settings → Environment Variables**, add `OPENAI_API_KEY` as a Secret for Production, Preview, and Development.
 4. Deploy.
 5. To connect a personal domain, open **Project Settings → Domains** and follow Vercel's DNS instructions.
 
@@ -76,7 +76,7 @@ Every push to the production branch can trigger a new Vercel deployment. Preview
 ## Security notes
 
 - Never commit `.env.local` or an API key. The repository's `.gitignore` excludes local environment files.
-- The Anthropic key is used only by `app/api/chat/route.js`, so it remains on the server and is not exposed to site visitors.
+- The OpenAI key is used only by `app/api/chat/route.js`, so it remains on the server and is not exposed to site visitors.
 
 ## Available scripts
 
